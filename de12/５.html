@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    
+    
+            <!-- ⑥↓タイトルを変えてみよう -->
+    
+    <!-- ⑤スタイルシートの設定をしよう -->
+    <link rel="stylesheet" href="./css/style.css">
+                <title>第五回課題</title>
+    <!-- h1.htmlからある行をコピペしてくればOK -->
+</head>
+<body>
+    <h1>第五回課題　</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    
+    <h3>webclassの通知を勝手に受け取ってくれるやつ〜</h3>
+    <div>
+    僕達の班は自動的にwebclassの課題の通知を受け取ってくれるコードを作成しました。<br>
+    自分は最後までやり切ることができず、通知更新のコードのやり方は理解できましたが、それを自分の課題に落とし込むことができませんでした。<br>
+    大まかなやり方はスクレイピングという方法を用いて、webclassの情報を抽出してそれをpythonに落とし込むやり方である。<br>
+    beautifulsoup、find()、というコードを用いてhtml、cssのコードを解析、整理、抽出することができる。<br>
+
+
+    途中までのソースコード↓<br>
+    <pre><code>
+      
+      
+      rom bs4 import BeautifulSoup
+      
+      
+      from urllib.request import urlopen
+      
+      
+      html = urlopen("https://kulms.kanagawa-u.ac.jp/webclass/?acs_=bdde5194")
+      
+      
+      data = html.read()
+      
+      html = data.decode('utf-8')
+      
+      soup = BeautifulSoup(html, 'html.parser')
+
+      
+title = soup.find("title")
+body = soup.find("body")
+
+print("title: " + title.text)
+print("body: " + body.text)
+      
+      links = soup.find_all("a")
+      
+      for a in links:
+          href = a.attrs['href']
+          text = a.text
+          print(text, href)   
+        
+    
+    </code></pre>
+
+
+
+
+
+
+     
+         
+
+
+
+
+
+</div>
+
+<div>
+    
